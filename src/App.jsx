@@ -1,33 +1,33 @@
-import { useState } from 'react';
-import { Navbar } from './components/Navbar';
-import { HeroSection } from './components/HeroSection';
-import { AboutSection } from './components/AboutSection';
-import { SkillsSection } from './components/SkillsSection';
-import { ProjectsSection } from './components/ProjectsSection';
-import { ExperienceSection } from './components/ExperienceSection';
-import { ContactSection } from './components/ContactSection';
-import { ToastNotification } from './components/ToastNotification';
-import { ArrowUp } from 'lucide-react';
+import { useState } from "react";
+import { Navbar } from "./components/Navbar";
+import { HeroSection } from "./components/HeroSection";
+import { AboutSection } from "./components/AboutSection";
+import { SkillsSection } from "./components/SkillsSection";
+import { ProjectsSection } from "./components/ProjectsSection";
+import { ExperienceSection } from "./components/ExperienceSection";
+import { ContactSection } from "./components/ContactSection";
+import { ToastNotification } from "./components/ToastNotification";
+import { ArrowUp } from "lucide-react";
 
 export default function App() {
   const [toastMessage, setToastMessage] = useState(null);
 
   const scrollToContact = () => {
-    const el = document.getElementById('contact');
+    const el = document.getElementById("contact");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToWork = () => {
-    const el = document.getElementById('projects');
+    const el = document.getElementById("projects");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -60,7 +60,9 @@ export default function App() {
             <div className="w-5 h-5 rounded-md bg-white border border-black/8 flex items-center justify-center font-bold text-[9px] text-neutral-700">
               R
             </div>
-            <span>© 2026 Rendra. Bridging architectural rigor with human-centered liquid interfaces.</span>
+            <span>
+              © 2026 Rendra. © 2026 Rendra. Built with technology and curiosity.
+            </span>
           </div>
 
           <button
