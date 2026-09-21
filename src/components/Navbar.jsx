@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
+import logo from "../assets/images/Logo.png";
 
 export function Navbar({ onContactClick }) {
   const [activeSection, setActiveSection] = useState("projects");
@@ -65,7 +66,7 @@ export function Navbar({ onContactClick }) {
         >
           <div className="w-9 h-9 rounded-xl bg-white/90 border border-black/8 shadow-xs flex items-center justify-center font-bold text-xs tracking-tight text-neutral-800 transition-all group-hover:scale-105 group-hover:border-blue-500/40 overflow-hidden">
             <span className="font-semibold text-neutral-900">
-              <img src="/src/assets/images/Logo.png" alt="Logo" />
+              <img src={logo} alt="Logo" />
             </span>
           </div>
         </button>
