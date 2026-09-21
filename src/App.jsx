@@ -20,7 +20,7 @@ export default function App() {
   };
 
   const scrollToWork = () => {
-    const el = document.getElementById('work');
+    const el = document.getElementById('projects');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }

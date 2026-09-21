@@ -21,7 +21,7 @@ export function HeroSection({ onExploreClick, onContactClick }) {
         {/* Top Eyebrow Pill */}
         <div
           id="hero-eyebrow"
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-black/[0.06] shadow-2xs mb-8"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-black/[0.06] shadow-2xs mb-8 transition-transform duration-300 hover:-translate-y-1"
         >
           <span className="w-2 h-2 rounded-full bg-[#0071e3] ring-4 ring-[#0071e3]/15" />
           <span className="text-[11px] font-semibold tracking-wider text-neutral-600 uppercase">
@@ -50,19 +50,10 @@ export function HeroSection({ onExploreClick, onContactClick }) {
           {/* Subtle back illumination glow */}
           <div className="absolute -inset-4 bg-radial from-blue-500/10 via-sky-400/5 to-transparent blur-2xl rounded-full -z-10" />
 
-          {/* Floating Pill: Top-Left (Web Development) */}
-          <div
-            id="badge-web-dev"
-            className="absolute -top-3 -left-6 sm:-left-12 z-20 hidden xs:flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-medium text-neutral-700 shadow-xs"
-          >
-            <Code2 className="w-3.5 h-3.5 text-[#0071e3]" />
-            <span>Web Development</span>
-          </div>
-
           {/* Floating Pill: Top-Right (Available for Opportunities) */}
           <div
             id="badge-status"
-            className="absolute -top-3 -right-6 sm:-right-16 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-[11px] font-medium text-neutral-700 shadow-xs"
+            className="absolute -top-3 -right-6 sm:-right-20 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-[11px] font-medium text-neutral-700 shadow-xs transition-transform duration-300 hover:-translate-y-1 hover:translate-x-1"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -74,10 +65,19 @@ export function HeroSection({ onExploreClick, onContactClick }) {
           {/* Floating Pill: Bottom-Left (Location & Year) */}
           <div
             id="badge-location"
-            className="absolute -bottom-3 -left-4 sm:-left-10 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-medium text-neutral-700 shadow-xs"
+            className="absolute bottom-1  sm:-right-20 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-medium text-neutral-700 shadow-xs transition-transform duration-300 hover:translate-y-1 hover:translate-x-1"
           >
             <Clock className="w-3.5 h-3.5 text-neutral-500" />
             <span>Indonesia · 2026</span>
+          </div>
+
+          {/* Floating Pill: Top-Left (Role) */}
+          <div
+            id="badge-role"
+            className="absolute top-20 -left-1 sm:-left-20 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-pill text-[11px] font-medium text-neutral-700 shadow-xs transition-transform duration-300 hover:-translate-y-1 hover:-translate-x-1"
+          >
+            <Clock className="w-3.5 h-3.5 text-neutral-500" />
+            <span>Software Engineer</span>
           </div>
 
           {/* Main Portrait Frame */}

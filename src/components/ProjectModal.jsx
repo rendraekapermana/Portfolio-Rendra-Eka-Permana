@@ -1,4 +1,4 @@
-import { X, ExternalLink, Sparkles, CheckCircle2, Layers } from 'lucide-react';
+import { X, ExternalLink, Sparkles, CheckCircle2, Layers } from "lucide-react";
 
 export function ProjectModal({ project, onClose }) {
   if (!project) return null;
@@ -27,14 +27,19 @@ export function ProjectModal({ project, onClose }) {
         {/* Modal Header */}
         <div className="mb-6 pr-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-[#0071e3] text-xs font-semibold tracking-wide uppercase mb-3">
-            <span>{project.num} · {project.category}</span>
+            <span>
+              {project.num} · {project.category}
+            </span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 mb-2">
             {project.title}
           </h2>
           {project.role && (
             <p className="text-xs sm:text-sm text-neutral-500 font-medium">
-              Role: <span className="text-neutral-700 font-semibold">{project.role}</span>
+              Role:{" "}
+              <span className="text-neutral-700 font-semibold">
+                {project.role}
+              </span>
               {project.timeline && ` · ${project.timeline}`}
             </p>
           )}
@@ -112,9 +117,9 @@ export function ProjectModal({ project, onClose }) {
               Close
             </button>
             <button
-              onClick={() => {
-                alert(`Redirecting to live showcase for ${project.title}`);
-              }}
+              onClick={() =>
+                window.open(project.url, "_blank", "noopener, noreferrer")
+              }
               className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#0071e3] hover:bg-[#005bb5] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer"
             >
               <span>Launch Demo</span>

@@ -7,7 +7,7 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <section id="work" className="py-20 md:py-28 relative">
+    <section id="projects" className="py-20 md:py-28 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
@@ -16,7 +16,7 @@ export function ProjectsSection() {
               PORTFOLIO
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1a1c1d]">
-              Selected Work
+              Selected Projects
             </h2>
           </div>
           <p className="text-neutral-500 text-xs sm:text-sm max-w-sm leading-relaxed md:text-right">

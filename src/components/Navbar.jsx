@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { ArrowRight, Menu, X } from "lucide-react";
 
 export function Navbar({ onContactClick }) {
-  const [activeSection, setActiveSection] = useState('work');
+  const [activeSection, setActiveSection] = useState("projects");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -10,7 +10,7 @@ export function Navbar({ onContactClick }) {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['work', 'about', 'skills', 'experience', 'contact'];
+      const sections = ["projects", "about", "skills", "experience", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -26,23 +26,23 @@ export function Navbar({ onContactClick }) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { id: 'work', label: 'eWork' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'contact', label: 'Contact' },
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
   ];
 
   const scrollTo = (id) => {
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -50,19 +50,23 @@ export function Navbar({ onContactClick }) {
     <header
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3 backdrop-blur-md bg-white/75 shadow-xs border-b border-black/[0.04]' : 'py-5 bg-transparent'
+        scrolled
+          ? "py-3 backdrop-blur-md bg-white/75 shadow-xs border-b border-black/[0.04]"
+          : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Left Monogram / Logo */}
         <button
           id="nav-logo-btn"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="group flex items-center gap-2 text-left cursor-pointer focus:outline-hidden"
           aria-label="Rendra Home"
         >
-          <div className="w-9 h-9 rounded-xl bg-white/90 border border-black/8 shadow-xs flex items-center justify-center font-bold text-xs tracking-tight text-neutral-800 transition-all group-hover:scale-105 group-hover:border-blue-500/40">
-            <span className="font-semibold text-neutral-900">img</span>
+          <div className="w-9 h-9 rounded-xl bg-white/90 border border-black/8 shadow-xs flex items-center justify-center font-bold text-xs tracking-tight text-neutral-800 transition-all group-hover:scale-105 group-hover:border-blue-500/40 overflow-hidden">
+            <span className="font-semibold text-neutral-900">
+              <img src="/src/assets/images/Logo.png" alt="Logo" />
+            </span>
           </div>
         </button>
 
@@ -80,8 +84,8 @@ export function Navbar({ onContactClick }) {
                 onClick={() => scrollTo(item.id)}
                 className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-neutral-100/90 text-neutral-900 font-semibold shadow-2xs'
-                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-black/[0.03]'
+                    ? "bg-neutral-100/90 text-neutral-900 font-semibold shadow-2xs"
+                    : "text-neutral-600 hover:text-neutral-900 hover:bg-black/[0.03]"
                 }`}
               >
                 {item.label}
@@ -108,7 +112,11 @@ export function Navbar({ onContactClick }) {
             className="md:hidden p-2 rounded-xl bg-white/80 border border-black/8 text-neutral-700 hover:text-neutral-900 focus:outline-hidden"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </div>
@@ -125,8 +133,8 @@ export function Navbar({ onContactClick }) {
               onClick={() => scrollTo(item.id)}
               className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors cursor-pointer ${
                 activeSection === item.id
-                  ? 'bg-blue-50/80 text-blue-600 font-semibold'
-                  : 'text-neutral-700 hover:bg-neutral-100/70'
+                  ? "bg-blue-50/80 text-blue-600 font-semibold"
+                  : "text-neutral-700 hover:bg-neutral-100/70"
               }`}
             >
               {item.label}

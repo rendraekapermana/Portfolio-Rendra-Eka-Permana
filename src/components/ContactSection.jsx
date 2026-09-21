@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import { Send, Mail, Github, Linkedin, CheckCircle2 } from 'lucide-react';
+import { useState } from "react";
+import { Send, Mail, Github, Linkedin, CheckCircle2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+const SERVICE_ID = "service_w6ydn1s";
+const TEMPLATE_ID = "template_ahhsr68";
+const PUBLIC_KEY = "NcYYAR9vnGfZAZ7Hg";
 
 export function ContactSection({ onNotify }) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -14,29 +19,50 @@ export function ContactSection({ onNotify }) {
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      onNotify('Please fill in all required fields.');
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      onNotify("Please fill in all required fields.");
       return;
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          title: formData.subject || "Contact Us",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        PUBLIC_KEY,
+      );
       setSubmitted(true);
-      onNotify('Message received! Thank you for reaching out, Rendra will get back to you shortly.');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 800);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      onNotify(
+        "Message received! Thank you for reaching out, Rendra will get back to you shortly.",
+      );
+    } catch (error) {
+      onNotify("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('rendra@example.com');
-    onNotify('Email address copied to clipboard (rendra@example.com)');
+    navigator.clipboard.writeText("rendraekapermanaa@gmail.com");
+    onNotify("Email address copied to clipboard (rendraekapermanaa@gmail.com)");
   };
 
   return (
@@ -68,7 +94,8 @@ export function ContactSection({ onNotify }) {
                 Thank You!
               </h3>
               <p className="text-sm text-neutral-600 mb-6">
-                Your message has been dispatched. Rendra will respond within 24 hours.
+                Your message has been dispatched. Rendra will respond within 24
+                hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
@@ -166,7 +193,7 @@ export function ContactSection({ onNotify }) {
                   id="submit-contact-btn"
                   className="w-full py-3 px-6 rounded-xl bg-[#0071e3] hover:bg-[#005bb5] active:scale-[0.99] text-white text-sm font-semibold shadow-md shadow-blue-500/20 flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-70"
                 >
-                  <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                  <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                   <Send className="w-4 h-4 fill-white/20" />
                 </button>
               </div>
@@ -184,7 +211,7 @@ export function ContactSection({ onNotify }) {
             </button>
             <span className="text-neutral-300">·</span>
             <a
-              href="https://github.com"
+              href="https://github.com/rendraekapermana"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 hover:text-[#0071e3] transition-colors"
@@ -194,7 +221,7 @@ export function ContactSection({ onNotify }) {
             </a>
             <span className="text-neutral-300">·</span>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/rendra-eka-permana/"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 hover:text-[#0071e3] transition-colors"
